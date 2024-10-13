@@ -34,24 +34,6 @@ Supported distros are Ubuntu, Debian, AlmaLinux, Rocky Linux, CentOS and Fedora.
 	exit
 fi
 
-if [[ "$os" == "ubuntu" && "$os_version" -lt 2204 ]]; then
-	echo "Ubuntu 22.04 or higher is required to use this installer.
-This version of Ubuntu is too old and unsupported."
-	exit
-fi
-
-if [[ "$os" == "debian" ]]; then
-	if grep -q '/sid' /etc/debian_version; then
-		echo "Debian Testing and Debian Unstable are unsupported by this installer."
-		exit
-	fi
-	if [[ "$os_version" -lt 11 ]]; then
-		echo "Debian 11 or higher is required to use this installer.
-This version of Debian is too old and unsupported."
-		exit
-	fi
-fi
-
 if [[ "$os" == "centos" && "$os_version" -lt 9 ]]; then
 	os_name=$(sed 's/ release.*//' /etc/almalinux-release /etc/rocky-release /etc/centos-release 2>/dev/null | head -1)
 	echo "$os_name 9 or higher is required to use this installer.
